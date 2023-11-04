@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bro</title>
+</head>
+<body>
+    <h1>Total Attempts: <span id="total">0</span></h1>
+    <div id="area">
+
+    </div>
+    <script>
+        for(let i=10;i<101;i++){
+            var a = document.createElement("h2")
+            a.innerHTML = `
+<strong>${i}</strong>: <span id="n${i}">0</span>
+            `
+            document.querySelector("#area").appendChild(a)
+        }
+
+        function n(){
+            s = 0
+            for(let i=0;i<10;i++){
+                s += Math.floor(Math.random()*10)+1
+            }
+            return s
+        }
+        var c = 0
+        const init = ()=>{
+            for(let i=0;i<Math.floor(Math.random()*50000)+100;i++){
+                c += 1
+                document.querySelector("#total").innerText = Number(document.querySelector("#total").innerText)+1
+                ele = document.querySelector("#n"+n())
+                ele.innerText = Number(ele.innerText)+1
+            }
+            window.requestAnimationFrame(init)
+        }
+        window.requestAnimationFrame(init)
+    </script>
+</body>
+</html>
