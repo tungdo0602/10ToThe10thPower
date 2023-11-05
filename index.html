@@ -14,7 +14,7 @@
         for(let i=10;i<101;i++){
             var a = document.createElement("h2")
             a.innerHTML = `
-<strong>${i}</strong>: <span id="n${i}">0</span>
+<strong>${i}</strong>: <span id="n${i}">0</span> (<span id="n${i}p">0</span>%)
             `
             document.querySelector("#area").appendChild(a)
         }
@@ -31,8 +31,11 @@
             for(let i=0;i<Math.floor(Math.random()*50000)+100;i++){
                 c += 1
                 document.querySelector("#total").innerText = Number(document.querySelector("#total").innerText)+1
-                ele = document.querySelector("#n"+n())
+                num = n()
+                var ele = document.querySelector("#n"+num)
                 ele.innerText = Number(ele.innerText)+1
+                var np = document.querySelector("#n"+num+"p")
+                np.innerText = (Number(ele.innerText)/Number(document.querySelector("#total").innerText))*100
             }
             window.requestAnimationFrame(init)
         }
